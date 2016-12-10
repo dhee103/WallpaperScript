@@ -1,0 +1,8 @@
+#!/usr/bin/ruby
+
+paths = `find ~/Pictures/Wallpapers`.split("\n")
+
+paths.map { |file|
+  `gsettings set org.gnome.desktop.background picture-uri file:///#{file}`
+  sleep 60
+}
