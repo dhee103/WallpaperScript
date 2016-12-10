@@ -1,6 +1,8 @@
 #!/usr/bin/ruby
 
-paths = `find ~/Pictures/Wallpapers`.split("\n").drop(1).shuffle
+dir = ARGV.empty? ? "~/Pictures/Wallpapers" : ARGV[0]
+
+paths = `find #{dir}`.split("\n").drop(1).shuffle
 
 paths.map { |file|
   `gsettings set org.gnome.desktop.background picture-uri file:///#{file}`
